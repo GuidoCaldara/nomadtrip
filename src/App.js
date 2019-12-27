@@ -1,24 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
+import FormContainer from './containers/FormContainer';
+import ResultsList from './containers/ResultsList';
+import { createStore } from 'redux';
+import { Provider } from "react-redux";
+
 import './App.css';
+
+
+const initialState = {
+  results: undefined,
+  loading: false
+};
+
+const reducer = (state = initialState, action) => {
+  if(action.type === "UPDATE") {
+    return {
+      results: action.payload.data,
+      loading: true
+    };
+  }
+  if(action.type === "START_FETCH") {
+    return {
+      ...state,
+      loading: true
+    };
+  }
+  if(action.type === "STOP_FETCH") {
+    return {
+      ...state,
+      loading: false
+    };
+  }
+  return state
+}
+
+const store = createStore(reducer);
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <Provider store={store}>
+      <FormContainer/>
+      <ResultsList/>
+    </Provider>
+
     </div>
   );
 }
