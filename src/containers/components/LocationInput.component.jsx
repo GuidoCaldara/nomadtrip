@@ -11,11 +11,10 @@ import scriptLoader from 'react-async-script-loader';
     const response = await fetch(url, {
         method: 'GET'
       });
-    
+
     const responseObject = await response.json();
     debugger
-    return await {code: responseObject.locations[0].code, country: responseObject.locations[0].country.id
-    }
+    return await {code: responseObject.locations[0].code, country: responseObject.locations[0].country.id}
   }
 
   const handleChange = async (e, name = '') =>{
@@ -29,7 +28,7 @@ import scriptLoader from 'react-async-script-loader';
 
   return (
     <div>
-    
+
     {props.inputIcon}
     <Autocomplete
       name={props.name}
