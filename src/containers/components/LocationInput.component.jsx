@@ -29,6 +29,7 @@ import scriptLoader from 'react-async-script-loader';
 
   return (
     <div>
+    
     {props.inputIcon}
     <Autocomplete
       name={props.name}
