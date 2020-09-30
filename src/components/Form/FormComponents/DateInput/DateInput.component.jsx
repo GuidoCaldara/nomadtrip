@@ -1,19 +1,22 @@
 import 'flatpickr/dist/flatpickr.css'
-import './formComponents.scss';
-import Flatpickr from 'react-flatpickr'
+import '../formComponents.scss';
+import FLatpickrComponent from './FlatpickrComponent.jsx'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 
 import  React  from 'react'
 
 const DateRangeInput = (props) => {
 
-  const convertDate = (date) =>{
-    return date.map((date) => {
+
+  const convertDate = (dates) =>{
+    console.log(dates)
+    return dates.map((date) => {
       let dateConverted = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
       dateConverted = dateConverted.toISOString().split("T")[0].split("-")
       return `${dateConverted[2]}/${dateConverted[1]}/${dateConverted[0]}`
     })
   }
-  
 
   const handleChange = (e, name) =>{
     if (e.length < 2) return
@@ -21,9 +24,9 @@ const DateRangeInput = (props) => {
   }
 
   return(
-    <div className="d-flex align-items-center">
-      {props.inputIcon}
-      <Flatpickr
+    <div className="form-wrapper">
+    <FontAwesomeIcon icon={faCalendar} />
+      <FLatpickrComponent
         className="form-input"
         name={props.name}
         placeholder= {props.placeholder}
@@ -33,7 +36,7 @@ const DateRangeInput = (props) => {
           dateFormat: "d/m/Y",
           defaultDate: props.defaultDate
         }}
-        onChange={(e) => ( handleChange(e, props.name) )} />
+        handleChange={handleChange} />
     </div>
   )
 }

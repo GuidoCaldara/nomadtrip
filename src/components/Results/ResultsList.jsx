@@ -1,7 +1,7 @@
 import React from "react";
-import ResultCard from "./components/results/ResultCard.component";
+import ResultCard from "./ResultCard.component";
 import { connect } from "react-redux";
-import RESULTS from './components/results/resultsSample'
+import RESULTS from './resultsSample'
 
 class ResultsList extends React.Component {
   render(){

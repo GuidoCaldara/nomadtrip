@@ -1,5 +1,5 @@
 import React from 'react'
-import {timeConverter, getAirlineName, secondsToHours} from '../../../helpers/helpers'
+import {timeConverter, getAirlineName, secondsToHours} from '../../helpers/helpers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons'
 import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'

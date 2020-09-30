@@ -1,7 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
-import { faMapPin } from '@fortawesome/free-solid-svg-icons'
 import ReactCountryFlag from "react-country-flag"
 
 const StopDetails = (props) =>{

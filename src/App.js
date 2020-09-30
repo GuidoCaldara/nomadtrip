@@ -1,6 +1,6 @@
 import React from 'react';
-import FormContainer from './containers/FormContainer';
-import ResultsList from './containers/ResultsList';
+import FormContainer from './components/Form/Form.container';
+import ResultsList from './components/Results/ResultsList';
 import { createStore } from 'redux';
 import { Provider } from "react-redux";
 

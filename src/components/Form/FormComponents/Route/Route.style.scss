@@ -1,0 +1,89 @@
+.location-stop-input{
+  .form-wrapper{
+    width: 100%
+  }
+}
+.route-details{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stop-form{
+  display: flex;
+  align-items: center;
+
+  .location-stop-input{
+    width: 50%;
+    flex-grow: 1;
+  }
+
+  .duration-stop-inputs{
+    display: flex;
+    width: 30%;
+    margin-right: 12px;
+    input{
+      margin-left: 4px;
+    }
+  }
+
+  .duration-box{
+    width: 15%;
+    padding: 0px;
+    input{
+      width: 100%;
+    }
+  }
+  .submit-box{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.stops-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stop-detail-box{
+  display: flex;
+  border-radius: 26px;
+  padding: 7px 14px;
+  border: 1px solid #c5c5c5;
+  align-items: center;
+  margin-right: 1rem;
+  margin-bottom: 8px;
+  font-size: 16px;
+  img{
+    margin-right: 4px;
+  }
+  .delete-stop-btn{
+    margin-left: 6px;
+  }
+}
+
+.delete-stop-btn{
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+}
+
+.trip-stops{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  padding: 24px 0px;
+}

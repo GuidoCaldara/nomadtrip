@@ -1,5 +1,5 @@
 import React from 'react'
-import { daysBetween } from '../../../helpers/helpers.js'
+import { daysBetween } from '../../helpers/helpers.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane } from '@fortawesome/free-solid-svg-icons'
 

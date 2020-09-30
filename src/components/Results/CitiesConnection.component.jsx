@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane } from '@fortawesome/free-solid-svg-icons'
 import { faPlaneDeparture } from '@fortawesome/free-solid-svg-icons'
 import { faPlaneArrival } from '@fortawesome/free-solid-svg-icons'
-import { timeConverter } from '../../../helpers/helpers'
+import { timeConverter } from '../../helpers/helpers'
 
 const CitiesConnection = (props) =>{
 

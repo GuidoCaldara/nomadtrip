@@ -1,10 +1,10 @@
-import React, { Component } from 'react';  
-import DateRangeInput from './components/DateRangeInput.component'
-import LocationInput from './components/LocationInput.component'
-import AdultsInput from './components/AdultsInput.component'
-import StopInputForm from './components/StopInputForm.component'
-import StopDetails from './components/StopDetails.component'
-import FormInputContainer from './components/FormInputContainer.component'
+import React, { Component } from 'react';
+import DateRangeInput from './FormComponents/DateInput/DateInput.component'
+import LocationInput from './FormComponents/LocationInput.component'
+import AdultsInput from './FormComponents/AdultsInput.component'
+import StopInputForm from './FormComponents/StopInputForm.component'
+import StopDetails from './FormComponents/StopDetails.component'
+import FormInputContainer from './FormComponents/FormInputContainer.component'
 import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -38,9 +38,9 @@ class FormContainer extends Component{
     })
     return {"via" : request}
   }
-  
-  
-  
+
+
+
   handleSumbit  = async (e) =>{
     e.preventDefault()
     this.props.dispatch({ type: 'START_FETCH' });
@@ -58,8 +58,8 @@ class FormContainer extends Component{
       this.props.dispatch({ type: 'STOP_FETCH' });
     }, 1500)
   }
-  
-  
+
+
   setDate = (dates, name) =>{
     this.setState({
       [`${name}From`]: dates[0],
@@ -69,13 +69,13 @@ class FormContainer extends Component{
 
   setAirport = (code, name, city) => {
     this.setState({
-      [`${name}Airport`]: code 
+      [`${name}Airport`]: code
     })
   }
 
   setAdults = (n) =>{
     this.setState({
-     adults: n 
+     adults: n
     })
   }
 
@@ -103,20 +103,20 @@ class FormContainer extends Component{
 
   showStops = () => {
     return(
-    this.state.departureFrom !== '' && 
-    this.state.departureTo !== '' && 
-    this.state.returnFrom !== '' && 
+    this.state.departureFrom !== '' &&
+    this.state.departureTo !== '' &&
+    this.state.returnFrom !== '' &&
     this.state.returnTo !== ''
     )
   }
 
   displayPassenger = () => {
     return true
-  //  return (this.state.departureAirport !== '' && 
-  //   this.state.returnAirport !== '' && 
-  //   this.state.departureFrom !== '' && 
-  //   this.state.departureTo !== '' && 
-  //   this.state.returnFrom !== '' && 
+  //  return (this.state.departureAirport !== '' &&
+  //   this.state.returnAirport !== '' &&
+  //   this.state.departureFrom !== '' &&
+  //   this.state.departureTo !== '' &&
+  //   this.state.returnFrom !== '' &&
   //   this.state.returnTo !== '')
   }
 
@@ -126,9 +126,9 @@ class FormContainer extends Component{
   }
 
   render(){
-    
+
     const tripDates = {
-      Dd: this.state.departureFrom, 
+      Dd: this.state.departureFrom,
       DD: this.state.departureTo,
       Aa: this.state.returnFrom,
       AA: this.state.returnTo
@@ -145,8 +145,8 @@ class FormContainer extends Component{
               <p className="mb-3 small text-muted">Let's start selecting the dates of your trip. Choose a range of dates for your departure and a range for your return</p>
               <div className="row">
                 <div className="col-md-6">
-                <FormInputContainer 
-                  input={                  
+                <FormInputContainer
+                  input={
                     <DateRangeInput
                       inputIcon = {<FontAwesomeIcon icon={faCalendar} />}
                       placeholder="Departure dates"
@@ -158,10 +158,10 @@ class FormContainer extends Component{
                 />
                 </div>
                 <div className="col-md-6">
-                  <FormInputContainer 
-                    input={                  
+                  <FormInputContainer
+                    input={
                       <DateRangeInput
-                        inputIcon = {<FontAwesomeIcon icon={faCalendar} />}                
+                        inputIcon = {<FontAwesomeIcon icon={faCalendar} />}
                         placeholder="return dates"
                         handleChange={this.setDate}
                         minDate={this.state.departureTo}
@@ -175,52 +175,52 @@ class FormContainer extends Component{
             </div>
             {
               (this.showStops()) ?
-              <div className="p-5 card form-card mt-4"> 
+              <div className="p-5 card form-card mt-4">
                 <StopInputForm
                   dates={tripDates}
                   handleClick={this.addStop}
                   id={this.state.nextId}
-                  /> 
+                  />
                   <div className="stops-container mt-4">
                   {this.state.stops.map((stop)=>{
-                  return <StopDetails 
-                        key={stop.id} 
+                  return <StopDetails
+                        key={stop.id}
                         country={stop.country}
-                        stop={stop} 
+                        stop={stop}
                         removeStop={this.removeStop}
                         />
                   })}
                   </div>
                   </div>
-  
+
                   : ''
                 }
 
-                
+
                 { ((this.state.stops.length >= 1) && (!this.state.showDepArr )) ?
                   (
                       <div className="py-4 d-flex justify-content-end align-items-center">
                         <p className="mb-0">Did you add all the cities you'd like to visit? Click here</p>
-                  <button className="ml-4" type="button" onClick={() => (this.setState({showDepArr: true}))}>Next</button> 
-                  </div>) : 
+                  <button className="ml-4" type="button" onClick={() => (this.setState({showDepArr: true}))}>Next</button>
+                  </div>) :
                   ''
-                } 
-                
-                
-              { this.state.showDepArr  ? 
+                }
+
+
+              { this.state.showDepArr  ?
                 (
-                                 
-                  <div className="p-5 card form-card mt-4"> 
+
+                  <div className="p-5 card form-card mt-4">
 
                 <div className="">
                 <h6><strong>Departure and return</strong></h6>
                 <p className="mb-4 small text-muted">Choose where you'd like to start and end your trip.</p>
                 <div className="row">
                   <div className="col-md-6">
-                    <FormInputContainer 
+                    <FormInputContainer
                       label="When would you like to depart"
                       subtitle="Choose a range of dates"
-                      input={                  
+                      input={
                         <LocationInput
                             inputIcon = {<FontAwesomeIcon icon={faPlaneDeparture} />}
                             placeholder={"Departure City"}
@@ -231,10 +231,10 @@ class FormContainer extends Component{
                     />
                   </div>
                   <div className="col-md-6">
-                    <FormInputContainer 
+                    <FormInputContainer
                       label="When would you like to depart"
                       subtitle="Choose a range of dates"
-                      input={                  
+                      input={
                         <LocationInput
                           inputIcon = {<FontAwesomeIcon icon={faPlaneArrival} />}
                           placeholder="return City"
@@ -252,22 +252,22 @@ class FormContainer extends Component{
 
 
               {
-                (this.displayPassenger()) ? 
-                <div className="p-5 card form-card mt-4"> 
+                (this.displayPassenger()) ?
+                <div className="p-5 card form-card mt-4">
                   <AdultsInput
                     handleSubmit={this.handleSumbit}
                     setAdults={this.setAdults}
                     showStops={this.showStops}/>
                 </div>
-                  : ''                  
+                  : ''
               }
-                
+
 
               </form>
           </div>
         </div>
       </div>
-    ) 
+    )
   }
 }
 
@@ -280,4 +280,3 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(FormContainer);
 
-  

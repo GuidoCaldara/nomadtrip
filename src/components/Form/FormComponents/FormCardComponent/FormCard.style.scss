@@ -1,0 +1,27 @@
+.form-card{
+  border: none;
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(183, 183, 183, 0.47);
+  -moz-box-shadow: 0px 0px 9px -1px rgba(183, 183, 183, 0.47);
+  box-shadow: 0px 0px 9px -1px rgba(183, 183, 183, 0.47);
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 20px;
+  .inputs.flex{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .buttons{
+    display: flex;
+    justify-content: space-between;
+  }
+  h3{
+    margin: 8px 0px
+  }
+}
+
+
+
+
